@@ -1,0 +1,22 @@
+VERSION BUILD=8970419 RECORDER=FX
+SET !DATASOURCE_COLUMNS 2
+SET !DATASOURCE Address.csv
+SET !DATASOURCE_LINE {{!LOOP}}
+
+WAIT SECONDS=3
+URL GOTO=https://ezpz.eu.org/wp-admin/post-new.php
+WAIT SECONDS=5
+TAG POS=1 TYPE=INPUT:TEXT FORM=ID:post ATTR=ID:idmuvi-core-id CONTENT={{!COL1}}
+WAIT SECONDS=5
+TAG POS=1 TYPE=INPUT:BUTTON FORM=ID:post ATTR=ID:idmuvi-core-id-submit
+WAIT SECONDS=5
+TAG POS=1 TYPE=INPUT:TEXT FORM=ID:post ATTR=ID:new-tag-muviquality CONTENT={{!COL2}}
+WAIT SECONDS=5
+TAG POS=1 TYPE=SPAN ATTR=ID:tab-2
+WAIT SECONDS=5
+TAG POS=1 TYPE=INPUT:TEXT FORM=ID:post ATTR=ID:opsi-title-player1 CONTENT=Server<SP>1
+WAIT SECONDS=5
+TAG POS=1 TYPE=TEXTAREA FORM=ID:post ATTR=ID:opsi-player1 CONTENT=<iframe<SP>src="https://database.gdriveplayer.me/player.php?imdb={{!COL1}}"<SP>frameborder="0"<SP>width="100%"<SP>height="400"<SP>allowfullscreen="allowfullscreen"><SP></iframe>
+WAIT SECONDS=5
+TAG POS=1 TYPE=INPUT:SUBMIT FORM=ID:post ATTR=ID:publish
+WAIT SECONDS=6
